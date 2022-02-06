@@ -3,6 +3,7 @@
 #include <math.h>
 
 #include "./statistic.h"
+#include "./float_list.h"
 
 float sum(size_t qt_numbers, float numbers[])
 {
@@ -115,11 +116,13 @@ int _count_float(size_t qt_numbers, float numbers[], float number)
     return counter;
 }
 
-float popular(size_t qt_numbers, float numbers[])
+FloatList *popular(size_t qt_numbers, float numbers[])
 {
     assert(qt_numbers != 0);
 
-    float most_popular_number = numbers[0];
+    FloatList *most_popular_numbers = float_list.create();
+    float_list.append(most_popular_numbers, numbers[0]);
+
     float most_popular_frequency = _count_float(qt_numbers, numbers, numbers[0]);
 
     for (size_t i = 1; i < qt_numbers; i++)
@@ -129,11 +132,11 @@ float popular(size_t qt_numbers, float numbers[])
         if (curr_frequency > most_popular_frequency)
         {
             most_popular_frequency = curr_frequency;
-            most_popular_number = numbers[i];
+            most_popular_numbers = numbers[i];
         }
     }
 
-    return most_popular_number;
+    return most_popular_numbers;
 }
 
 float variance(size_t qt_numbers, float numbers[])
