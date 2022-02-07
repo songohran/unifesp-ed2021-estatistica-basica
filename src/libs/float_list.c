@@ -91,7 +91,7 @@ float list_get(FloatList *list, size_t index)
     return _list_get_node(list, index)->value;
 }
 
-size_t list_index(FloatList *list, float value)
+long list_index(FloatList *list, float value)
 {
     assert(list != 0);
 
@@ -113,8 +113,7 @@ size_t list_index(FloatList *list, float value)
         curr_node = curr_node->next;
     }
 
-    printf("List empty in %s at %d\n", __FILE__, __LINE__);
-    exit(1);
+    return -1;
 }
 
 float list_remove(FloatList *list, size_t index)

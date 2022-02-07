@@ -5,12 +5,13 @@
 
 typedef struct _FloatList FloatList;
 
+// Juntando as funções float list
 typedef struct
 {
     FloatList *(*create)();
     void (*append)(FloatList *, float);
     float (*get)(FloatList *, size_t);
-    size_t (*index)(FloatList *, float);
+    long (*index)(FloatList *, float);
     float (*remove)(FloatList *, size_t);
     void (*clear)(FloatList *);
     size_t (*length)(FloatList *);

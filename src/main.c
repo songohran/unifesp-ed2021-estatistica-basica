@@ -1,27 +1,42 @@
 #include <stdio.h>
 #include <math.h>
 
-// #include "./libs/statistic.h"
+#include "./libs/statistic.h"
 #include "./libs/float_list.h"
 
 void _print_list(float value, size_t index, FloatList *list)
 {
-    printf("%f - %ld\n", value, index);
+    printf("(%.2f) ", value);
 }
+
+#define LIM 25
 
 int main()
 {
-    FloatList *list = float_list.create();
+    float numbers[LIM];
+    float qt_numbers;
 
-    for (size_t i = 0; i < 10; i++)
+    printf("Quantos números você quer digitar: ");
+    scanf("%f", &qt_numbers);
+
+    for (size_t i = 0; i < qt_numbers; i++)
     {
-
-        float_list.append(list, (i * 2));
+        printf("> ");
+        scanf("%f", &numbers[i]);
     }
 
-    float_list.clear(list);
+    FloatList *popular_numbers = popular(qt_numbers, numbers);
 
-    float_list.foreach (list, _print_list);
+    printf("Soma: %.2f\n", sum(qt_numbers, numbers));
+    printf("Minímo: %.2f\n", min(qt_numbers, numbers));
+    printf("Máximo: %.2f\n", max(qt_numbers, numbers));
+    printf("Média: %.2f\n", average(qt_numbers, numbers));
+    printf("Mediana: %.2f\n", median(qt_numbers, numbers));
+    printf("Moda: ");
+    float_list.foreach (popular_numbers, _print_list);
+    printf("\n");
+    printf("Variância: %.2f\n", variance(qt_numbers, numbers));
+    printf("Desvio padrão: %.2f\n", standard_deviation(qt_numbers, numbers));
 
     return 0;
 }
