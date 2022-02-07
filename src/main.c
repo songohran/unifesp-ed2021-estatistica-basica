@@ -16,7 +16,7 @@ int main()
     float numbers[LIM];
     float qt_numbers;
 
-    printf("Quantos números você quer digitar: ");
+    printf("Entre com uma lista de valores: ");
     scanf("%f", &qt_numbers);
 
     for (size_t i = 0; i < qt_numbers; i++)
@@ -36,7 +36,7 @@ int main()
     float_list.foreach (popular_numbers, _print_list);
     printf("\n");
     printf("Variância: %.2f\n", variance(qt_numbers, numbers));
-    printf("Desvio padrão: %.2f\n", standard_deviation(qt_numbers, numbers));
+    printf("Desvio Padrão: %.2f\n", standard_deviation(qt_numbers, numbers));
 
     return 0;
 }
